@@ -41,7 +41,7 @@ plugins:
 #  - jekyll-coffeescript
 #  - jekyll-gist
 #  - jekyll-github-metadata
-  - jekyll-default-layout
+#  - jekyll-default-layout
 
  
 # Заранее заданные переменные для файлов
