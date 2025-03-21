@@ -1,4 +1,6 @@
-hello world!
+---
+pagetype: category
+title: Home
+---
 
-здоров будь, друже
-
+json was here - [/index.json](/index.json)

@@ -1,0 +1,62 @@
+# Переменные
+title: Домик
+#description: 
+#show_downloads: true
+#google_analytics: G-5KGG8GDK54
+#copyright: © 2018+
+#mybaseurl: "" # встраивается в шапку html <base>
+baseurl: "" # хардкодится перед каждой относительной ссылкой
+
+# Конфигурация
+encoding: UTF-8
+timezone: Europe/Kiev
+markdown: kramdown
+highlighter: rouge
+# Тема уже скомпилирована /assets/css/style.css
+# На всякий случай репо: https://github.com/pages-themes/cayman
+theme: jekyll-default-layout
+
+kramdown:
+  parse_span_html: true
+  parse_block_html: true
+  toc_levels             : 1..3
+#  input                  : GFM
+  hard_wrap              : true
+#  auto_ids               : true
+#  entity_output          : as_char
+#  smart_quotes           : lsquo,rsquo,ldquo,rdquo
+#  enable_coderay         : false
+
+plugins:
+  - jekyll-redirect-from
+  - jemoji
+  - jekyll-paginate
+  - jekyll-gist
+  - rouge
+# for github pages compatibility
+  - jekyll-optional-front-matter
+  - jekyll-titles-from-headings
+  - jekyll-relative-links
+#  - jekyll-readme-index
+#  - jekyll-coffeescript
+#  - jekyll-gist
+#  - jekyll-github-metadata
+  - jekyll-default-layout
+
+ 
+# Заранее заданные переменные для файлов
+defaults:
+- scope:
+    type: pages
+  values:
+    layout: default
+
+
+exclude: [node_modules, README.md, drafts]
+
+
+#markdown: GFM
+#markdown: CommonMarkGhPages
+#commonmark:
+#  options: ["SMART", "FOOTNOTES"]
+#  extensions: ["strikethrough", "autolink", "tables"]

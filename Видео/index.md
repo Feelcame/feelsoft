@@ -1,0 +1,3 @@
+---
+pagetype: category
+---
