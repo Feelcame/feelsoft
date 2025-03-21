@@ -14,9 +14,11 @@
 {% capture result -%}
 <ol>
 {%- for pg in all_pages -%}
+{%- unless pg.title == "Home" -%}
 <li>
 <a href="{{ pg.url | relative_url }}">{{ pg.path | remove: "/index.md" | split: "/" | last }}</a>
 </li>
+{%- endunless -%}
 {% endfor -%}
 </ol>
 {%- endcapture -%}
