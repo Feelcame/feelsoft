@@ -14,7 +14,7 @@ markdown: kramdown
 highlighter: rouge
 # Тема уже скомпилирована /assets/css/style.css
 # На всякий случай репо: https://github.com/pages-themes/cayman
-theme: jekyll-default-layout
+#theme: jekyll-default-layout
 
 kramdown:
   parse_span_html: true
