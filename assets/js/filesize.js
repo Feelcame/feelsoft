@@ -1,28 +1,30 @@
 function addFileSizesToLinks(containerId) {
     // Находим div по его id
-    var container = document.getElementById(containerId);
+    let container = document.getElementById(containerId);
     if (!container) {
         console.error("Контейнер с id '" + containerId + "' не найден.");
         return;
     }
 
     // Находим все ссылки внутри указанного div
-    var links = container.getElementsByTagName("a");
-    var linksCount = links.length;
+    let links = container.getElementsByTagName("a");
+    let linksCount = links.length;
 
-    for (var i = 0; i < linksCount; i++) {
-        var linkElement = links[i];
-        var hrefValue = linkElement.getAttribute("href");
+    for (let i = 0; i < linksCount; i++) {
+        // Используем let для каждого элемента, чтобы область видимости была ограничена итерацией
+        let linkElement = links[i];
+        let hrefValue = linkElement.getAttribute("href");
 
         // Пропускаем пустые ссылки
         if (!hrefValue || hrefValue === "#") {
             continue;
         }
-		
+        
         // Проверяем, заканчивается ли ссылка на ".apk"
         if (!hrefValue.endsWith(".apk")) {
             continue;
-		}
+        }
+
         // Получаем размер файла через fetch
         fetch(hrefValue)
             .then(response => {
@@ -36,14 +38,21 @@ function addFileSizesToLinks(containerId) {
                 if (sizeInBytes) {
                     // Конвертация размера в мегабайты с округлением до сотых
                     const sizeInMegabytes = (sizeInBytes / (1024 * 1024)).toFixed(2);
-                    // Добавляем размер файла рядом с текстом ссылки
-                    const sizeText = document.createTextNode(` (${sizeInMegabytes} MB)`);
-                    linkElement.parentNode.insertBefore(sizeText, linkElement.nextSibling);
+                    // Создание элемента <span> с классом size
+                    const sizeSpan = document.createElement("span");
+                    sizeSpan.className = "size";
+                    sizeSpan.textContent = ` (${sizeInMegabytes} MB)`;
+                    // Вставка <span> сразу после ссылки
+                    if (linkElement.nextSibling) {
+                        linkElement.parentNode.insertBefore(sizeSpan, linkElement.nextSibling);
+                    } else {
+                        linkElement.parentNode.appendChild(sizeSpan);
+                    }
                 }
             })
             .catch(() => {
                 // Обрабатываем ошибки, если файл недоступен
-                var errorText = document.createTextNode(" (размер неизвестен)");
+                let errorText = document.createTextNode(" (размер неизвестен)");
                 linkElement.parentNode.insertBefore(errorText, linkElement.nextSibling);
             });
     }
