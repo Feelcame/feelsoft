@@ -5,6 +5,7 @@
   | where_exp: "item",  "item.path contains directory"
   | sort: "path"
 %}
+{%- assign filescount = all_files.size -%}  
 
 {% capture result %}
 <ol>
@@ -16,8 +17,7 @@
 </ol>
 {% endcapture %}
 
-{%- assign filescount = all_files.size -%}  
-<b>Всего файлов: {{ filescount }}</b>
 {% if filescount > 0 %}
-{{ result }}
+<b>Всего файлов: {{ filescount }}</b>
+<div id="filelist">{{ result }}</div>
 {% endif %}
